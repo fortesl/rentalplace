@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   let model = {
     title: 'lmlf',
-    message: process.env.ENVIRONMENT_LABEL
+    message: process.env.ENVIRONMENT_LABEL || "this is development"
   }
   res.render('index', { model: model });
 });
