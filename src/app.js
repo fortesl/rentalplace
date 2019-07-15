@@ -11,6 +11,7 @@ appInsights.start();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var coursesRouter = require('./routes/courses');
+var imagesRouter = require('./routes/images');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/courses', coursesRouter);
+app.use('/images', imagesRouter);
 
 app.use('/problem', function() { throw new Error('Something is wrong!'); });
 
