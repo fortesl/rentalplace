@@ -11,11 +11,14 @@ router.post('/', (req, res, next) => {
     const form = new multiparty.Form();
 
     form.on('part', part => {
-        imagedb.saveImage(part, part.byteCount, (err, id => {
+        imagedb.saveImage(part, part.byteCount, (err, id) => {
             if (err) next(err);
             res.redirect(`/images/show/${id}`);
-        }));
+        });
     });
+
+    form.parse(req);
+
 });
 
 router.get('/show/:imageId', (req, res, next) => {
