@@ -9,7 +9,7 @@ const saveImage = (stream, size, callback) => {
 };
 
 const getImageUri = (imageId) => {
-    const url = blobService.getUrl(dbConfig.imageContainer, imageId);
+    const url = dbConfig.blobService.getUrl(dbConfig.imageContainer, imageId);
     return url;
 };
 
