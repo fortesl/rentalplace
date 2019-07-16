@@ -16,5 +16,10 @@ module.exports = {
     client: new docdb.DocumentClient(dbAuth.host, dbAuth.accountKey),
     coursesLink: docdb.UriFactory.createDocumentCollectionUri('rentalplace', 'courses'),
     blobService: azureStorage.createBlobService(storageAuth.connectionString),
-    imageContainer: storageAuth.imageContainer
+    imageContainer: storageAuth.imageContainer,
+    imagePermissions: {
+        Permissions: azureStorage.BlobUtilities.SharedAccessPermissions.READ,
+        Start: azureStorage.date.minutesFromNow(-15),
+        Expiry: azureStorage.date.minutesFromNow(30)
+    }
 };

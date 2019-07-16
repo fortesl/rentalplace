@@ -10,7 +10,8 @@ const saveImage = (stream, size, callback) => {
 
 const getImageUri = (imageId) => {
     const url = dbConfig.blobService.getUrl(dbConfig.imageContainer, imageId);
-    return url;
+    const sas = dbConfig.blobService.generateSharedAccessSignature(dbConfig.imageContainer, imageId, dbConfig.imagePermissions);
+    return `${url}?${sas}`;
 };
 
 module.exports = {
