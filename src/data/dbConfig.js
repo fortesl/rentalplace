@@ -18,8 +18,10 @@ module.exports = {
     blobService: azureStorage.createBlobService(storageAuth.connectionString),
     imageContainer: storageAuth.imageContainer,
     imagePermissions: {
-        Permissions: azureStorage.BlobUtilities.SharedAccessPermissions.READ,
-        Start: azureStorage.date.minutesFromNow(-15),
-        Expiry: azureStorage.date.minutesFromNow(30)
+        AccessPolicy: {
+            Permissions: azureStorage.BlobUtilities.SharedAccessPermissions.READ,
+            Start: azureStorage.date.minutesFromNow(-15),
+            Expiry: azureStorage.date.minutesFromNow(30)    
+        }
     }
 };
