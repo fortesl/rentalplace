@@ -4,13 +4,13 @@ const azureStorage = require('azure-storage');
 
 const dbAuth = {
     host: 'https://cdb-rentalplace.documents.azure.com:443/',
-    accountKey: 'eh5uY4j5osHnUMXPWfn0VyVOH2chqVHnM0mcWnkTc8CcHnO60D4cbn8GjQuPaer980ViJOTbkDR6TRw9E8YjsA=='
+    accountKey: process.env.COSMOS_ACCOUNT_KEY
 };
 
-storageAuth = {
-    connectionString: 'DefaultEndpointsProtocol=https;AccountName=cs40d03c378490fx4f90xa7b;AccountKey=OQO77+iVRG1qPC3THnCdX5RbjGINoLe7rgRapVpDTG0cSCAEE+VFCax4bkGW5eoMO+1EziqbbhuWYHzGIoJBtg==;',
+const storageAuth = {
+    connectionString: process.env.STORAGE_CONNECTION_STRING,
     imageContainer: 'images'
-}
+};
 
 module.exports = {
     client: new docdb.DocumentClient(dbAuth.host, dbAuth.accountKey),
