@@ -21,6 +21,7 @@ const queryCourses = (callback) => {
   };
 
   dbConfig.client.queryDocuments(dbConfig.coursesLink, querySpec).toArray((err, results) => {
+    if (err) return next(err);
     if (results.length == 0) {
       createCourses((err, documents) => {
         if (err) return next(err);
