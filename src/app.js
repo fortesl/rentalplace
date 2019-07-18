@@ -5,8 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var appInsights = require('applicationinsights');
-appInsights.setup('0b735e38-12ce-46a4-ad6e-8d312e6ff9e0');
-appInsights.start();
+appInsights.setup(process.env.APPLICATIONINSIGHTSKEY || '0b735e38-12ce-46a4-ad6e-8d312e6ff9e0').start();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
