@@ -8,7 +8,9 @@ const collectionId = 'courses';
 
 function CourseDB() {
   this.taskDao = new TaskDao(dbConfig.client, databaseId, collectionId);
-  this.taskDao.init();
+  this.taskDao.init(err => {
+    if (err) throw new Error(err);
+  });
 }
 
 module.exports = CourseDB;
