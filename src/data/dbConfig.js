@@ -8,7 +8,7 @@ const dbAuth = {
 };
 
 const storageAuth = {
-    connectionString: process.env.STORAGE_CONNECTION_STRING || 'DefaultEndpointsProtocol=https;AccountName=cs40d03c378490fx4f90xa7b;AccountKey=0NKYzQJ7PEfdNd2WGYr2aov7ocpNEqa4e4Ei2MihY5sMojAf7/X6RERWfmcVNvRZiPpaj2ovGMmqL7BdZWcDnQ==;EndpointSuffix=core.windows.net',
+    connectionString: process.env.STORAGE_CONNECTION_STRING,
     imageContainer: 'images'
 };
 

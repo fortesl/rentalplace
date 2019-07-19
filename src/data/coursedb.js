@@ -19,18 +19,22 @@ CourseDB.prototype = {
     const self = this;
 
     const documents = [];
-  
-    async.forEachOf(sampleData, (course, key, next) => {
-      self.taskDao.addItem(course, (err, document) => {
-        if (err) return next(err);
-        documents.push(document);
+    let i = 0;
+    sampleData.forEach(course => {
+      self.taskDao.addItem(course, (err, doc) => {
+        if (err) {
+          callback(err);
+          return;
+        } else {
+          documents.push(doc);
+          i++;
+          if (i == sampleData.length) {
+            callback(null, documents);
+            return;
+          }
+        } 
       });
-    }, (err) => {
-      callback(err, documents)
     });
-  
-  
-    async.forEachO
   },
 
   queryCourses: function(callback)  {
