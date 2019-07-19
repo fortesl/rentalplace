@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const docsdb = require('../data/coursedb');
+const CourseDb = require('../data/coursedb');
 
+const courseDb = new CourseDb();
 router.get('/', (req, res, next) => {
-    docsdb.queryCourses((err, documents) => {
+    courseDb.queryCourses((err, documents) => {
         if (err) return next(err);
         res.send(documents);
     });
 });
 
 router.post('/', (req, res, next) => {
-    docsdb.createCourses((err, documents) => {
+    courseDb.createCourses((err, documents) => {
         if (err) return next(err);
         res.send(documents);
     });
